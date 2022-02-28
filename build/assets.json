@@ -1,0 +1,48 @@
+{
+  "version": "3018f55e",
+  "entry": {
+    "module": "/build/entry.client-JZKJKW34.js",
+    "imports": [
+      "/build/_shared/chunk-O2SS5RA2.js",
+      "/build/_shared/chunk-UOTXCY3J.js"
+    ]
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "module": "/build/root-2DMFQX77.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/$slug": {
+      "id": "routes/$slug",
+      "parentId": "root",
+      "path": ":slug",
+      "module": "/build/routes/$slug-TI6P2CSX.js",
+      "imports": [
+        "/build/_shared/chunk-GQPASFQG.js"
+      ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/index": {
+      "id": "routes/index",
+      "parentId": "root",
+      "index": true,
+      "module": "/build/routes/index-62H3J233.js",
+      "imports": [
+        "/build/_shared/chunk-GQPASFQG.js"
+      ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    }
+  },
+  "url": "/build/manifest-3018F55E.js"
+}
