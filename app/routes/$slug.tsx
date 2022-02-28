@@ -26,8 +26,6 @@ export default function PageRoute() {
 
   const Component = useMdxComponent(code)
 
-  console.log(frontmatter, code)
-
   return (
     <Layout>
       <article className="prose lg:prose-xl">

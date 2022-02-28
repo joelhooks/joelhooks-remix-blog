@@ -28,6 +28,8 @@ export default function PageRoute() {
   return (
     <Layout>
       <article className="prose lg:prose-xl">
+        {frontmatter.banner && <img src={frontmatter.banner} />}
+        <h1>{frontmatter.title}</h1>
         <Component />
       </article>
     </Layout>
