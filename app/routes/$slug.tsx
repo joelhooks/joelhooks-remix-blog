@@ -26,9 +26,13 @@ export default function PageRoute() {
 
   const Component = useMdxComponent(code)
 
+  console.log(frontmatter, code)
+
   return (
     <Layout>
       <article className="prose lg:prose-xl">
+        {frontmatter.banner && <img src={frontmatter.banner} />}
+        <h1>{frontmatter.title}</h1>
         <Component />
       </article>
     </Layout>
