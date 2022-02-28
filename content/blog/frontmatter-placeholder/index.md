@@ -5,7 +5,7 @@ title: 'this post is a ghost'
 description: 'this post has all of the right fields'
 categories: ['test']
 keywords: ['test']
-banner: '/images/banner.jpg'
+banner: 'https://res.cloudinary.com/joelhooks-com/image/upload/v1646023534/images/banner.jpg'
 published: false
 hidden: true
 redirects:

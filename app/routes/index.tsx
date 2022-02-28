@@ -2,6 +2,7 @@ import * as React from 'react'
 import {json, LoaderFunction, useLoaderData} from 'remix'
 import {getMdxPage, useMdxComponent} from '~/utils/mdx'
 import Layout from '~/components/layout'
+import Logo from '~/components/Logo'
 
 export const loader: LoaderFunction = async ({request, params}) => {
   const page = await getMdxPage({
