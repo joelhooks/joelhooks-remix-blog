@@ -1,24 +1,23 @@
 import * as React from 'react'
-import { json, LoaderFunction, useLoaderData } from "remix";
-import { getMdxPage, useMdxComponent } from "~/utils/mdx";
+import {json, LoaderFunction, useLoaderData} from 'remix'
+import {getMdxPage, useMdxComponent} from '~/utils/mdx'
+import Layout from '~/components/layout'
 
 export const loader: LoaderFunction = async ({request, params}) => {
-  const page = await getMdxPage(
-    {
-      contentDir: 'blog',
-      slug: params.slug,
-    }
-  )
+  const page = await getMdxPage({
+    contentDir: 'blog',
+    slug: params.slug,
+  })
 
   const headers = {
-    'Cache-Control': 'private, max-age=3600'
+    'Cache-Control': 'private, max-age=3600',
   }
 
   return json({page}, {status: 200, headers})
 }
 
 type LoaderData = {
-  page: {code:string, frontmatter?:any}
+  page: {code: string; frontmatter?: any}
 }
 
 export default function PageRoute() {
@@ -26,5 +25,12 @@ export default function PageRoute() {
   const {code, frontmatter} = data.page
 
   const Component = useMdxComponent(code)
-  return <div><Component/></div>;
+
+  return (
+    <Layout>
+      <article className="prose lg:prose-xl">
+        <Component />
+      </article>
+    </Layout>
+  )
 }
