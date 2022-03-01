@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({
 
   return (
     <>
-      <div className={`flex flex-col min-h-screen max-w-4xl mx-auto`}>
+      <div className={`flex flex-col min-h-screen max-w-4xl mx-auto mb-72`}>
         <Link
           to="/"
           className="flex w-full lg:py-12 py-8 text-black items-center"
