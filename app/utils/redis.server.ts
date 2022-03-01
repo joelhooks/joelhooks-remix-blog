@@ -39,9 +39,9 @@ const PRIMARY_REGION = isMultiRegion
   : null
 const FLY_REGION = isMultiRegion ? getRequiredServerEnvVar('FLY_REGION') : null
 
-if (FLY_REGION) {
-  replica.host = `${FLY_REGION}.${replica.host}`
-}
+// if (FLY_REGION) {
+//   replica.host = `${FLY_REGION}.${replica.host}`
+// }
 
 const replicaClient = createClient('replicaClient', {
   url: replica.toString(),
