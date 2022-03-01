@@ -3,6 +3,8 @@ import fs from 'fs/promises'
 
 import {bundleMDX} from 'mdx-bundler'
 import {last, first, take, drop} from 'lodash'
+import {cachified} from '~/utils/cache.server'
+import {redisCache} from '~/utils/redis.server'
 
 const getAllFiles = async function (
   dirPath: string,
@@ -62,6 +64,29 @@ export async function isPathDirectory(path: string) {
   }
 
   return isDirectory
+}
+
+const defaultMaxAge = 1000 * 60
+
+export async function getFullContentIndexFrontMatterCached() {
+  const key = 'all:posts'
+  const page = await cachified({
+    cache: redisCache,
+    maxAge: defaultMaxAge,
+    // reusing the same key as compiledMdxCached because we just return that
+    // exact same value. Cachifying this allows us to skip getting the cached files
+    key,
+    checkValue: (value: unknown) => Array.isArray(value),
+    getFreshValue: async () => {
+      const compiledPage = await getFullContentIndexFrontMatter()
+      return compiledPage
+    },
+  })
+  if (!page) {
+    // if there's no page, let's remove it from the cache
+    void redisCache.del(key)
+  }
+  return page
 }
 
 export async function getFullContentIndexFrontMatter() {

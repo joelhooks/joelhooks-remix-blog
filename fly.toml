@@ -8,6 +8,10 @@ processes = []
 
 [env]
   PORT = "8080"
+  HUSKY_SKIP_INSTALL = "1"
+  NODE_ENV = "production"
+  FLY = "true"
+  PRIMARY_REGION = "sea"
 
 [experimental]
   allowed_public_ports = []

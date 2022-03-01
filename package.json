@@ -4,13 +4,14 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "npm run build:css && remix build",
+    "build": "npm run build:css && npm run build:remix",
+    "build:remix": "cross-env remix build",
     "build:css": "tailwindcss -o app/styles/tailwind.css",
-    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev": "concurrently \"npm run dev:css\" \"node -r dotenv/config node_modules/.bin/remix dev\"",
     "dev:css": "tailwindcss -o app/styles/tailwind.css --watch",
     "postinstall": "remix setup node",
     "deploy": "fly deploy --remote-only",
-    "start": "remix-serve build"
+    "start": "cross-env remix-serve build"
   },
   "dependencies": {
     "@esbuild-plugins/node-resolve": "^0.1.4",
@@ -23,22 +24,28 @@
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.2",
     "concurrently": "^7.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
     "esbuild": "^0.14.23",
     "lodash": "^4.17.21",
+    "lru-cache": "^7.4.0",
     "mdx-bundler": "^8.0.1",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-responsive-embed": "^2.1.0",
     "react-twitter-embed": "^4.0.4",
+    "redis": "^3.1.2",
     "remix": "^1.2.2",
     "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.2.2",
     "@types/lodash": "^4.14.179",
+    "@types/lru-cache": "^7.4.0",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "@types/redis": "^2.8.32",
     "typescript": "^4.5.5"
   },
   "engines": {

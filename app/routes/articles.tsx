@@ -1,11 +1,14 @@
 import * as React from 'react'
 import {json, LoaderFunction, useLoaderData} from 'remix'
 import Layout from '~/components/layout'
-import {getFullContentIndexFrontMatter} from '~/utils/compile-mdx.server'
+import {
+  getFullContentIndexFrontMatter,
+  getFullContentIndexFrontMatterCached,
+} from '~/utils/compile-mdx.server'
 import {Link} from '@remix-run/react'
 
 export const loader: LoaderFunction = async ({request, params}) => {
-  const allContent = await getFullContentIndexFrontMatter()
+  const allContent = await getFullContentIndexFrontMatterCached()
 
   const headers = {
     'Cache-Control': 'private, max-age=3600',
